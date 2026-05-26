@@ -14,17 +14,24 @@ mongoose
 const app = express();
 
 // ✅ Middleware'lar AVVAL
-app.use(helmet());
+// Helmet'ni hozircha to'liq bloklamasligi uchun biroz yumshatamiz yoki o'chirib turamiz
+app.use(
+  helmet({
+    contentSecurityPolicy: false, // Tashqi rasmlar va so'rovlar muammosiz ishlashi uchun
+  }),
+);
+
 app.use(
   cors({
     origin: [
-      "https://davo-admin-flame.vercel.app/", // Oxiridagi / belgisini o'chirdik!
-      "https://davo-app.vercel.app/", // Davo-app Vercel manzilini ham shu yerga yozing
+      "https://davo-admin-flame.vercel.app", // Oxiridagi / mutloq olib tashlandi!
+      "https://davo-app.vercel.app", // Oxiridagi / mutloq olib tashlandi!
       "http://localhost:5173",
     ],
     credentials: true,
   }),
 );
+
 app.use(express.json({ limit: "10kb" }));
 
 // ✅ Routelar KEYIN
