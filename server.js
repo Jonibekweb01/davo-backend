@@ -17,7 +17,11 @@ const app = express();
 app.use(helmet());
 app.use(
   cors({
-    origin: ["https://davo-admin-flame.vercel.app/", "http://localhost:5173"],
+    origin: [
+      "https://davo-admin-flame.vercel.app", // Oxiridagi / belgisini o'chirdik!
+      "https://davo-app-sizning-manzilingiz.vercel.app", // Davo-app Vercel manzilini ham shu yerga yozing
+      "http://localhost:5173",
+    ],
     credentials: true,
   }),
 );
